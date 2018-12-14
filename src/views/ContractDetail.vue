@@ -142,7 +142,7 @@
                 customerPerson: {},
                 guarantPerson: {},
                 list: {},
-                contractId: ''
+                contractId: '',
             }
         },
         async created() {
@@ -186,7 +186,7 @@
                         contractId = this.contractId;
                     }
                     this.planInfo = await getPlanInfo({contractId});
-                    console.log('this.planInfo',this.planInfo);
+                    // console.log('this.planInfo',this.planInfo);
                     this.onOff = false;
                 }
             }
