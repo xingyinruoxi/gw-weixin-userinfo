@@ -1,21 +1,21 @@
 # gw-weixin-userinfo
 
-## Project setup
+## 项目安装
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 运行开发环境（编译和热重载）
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### 生产打包（编译和压缩）
 ```
 yarn run build
 ```
 
-### Run your tests
+### 本地测试运行
 ```
 yarn run test
 ```

@@ -36,6 +36,7 @@
 </script>
 <style scoped lang="less">
     #mask {
+        transition: 1s;
         position: absolute;
         left: 0;
         top: 0;
