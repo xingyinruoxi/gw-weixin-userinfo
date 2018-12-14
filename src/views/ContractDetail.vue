@@ -4,7 +4,7 @@
             <div class="userinfo">
                 <strong>{{customerPerson.fullname}}</strong>
                 <ul>
-                    <li class="arrow-wrap">申请编号：{{customerPerson.idCard}}
+                    <li class="arrow-wrap">申请编号：{{customerPerson.approveNo}}
                         <i
                                 @click="toggleClick"
                                 class="ico-arrow"
@@ -114,7 +114,7 @@
                             </li>
                         </ul>
                         <div class="total-num">
-                            <span>合集</span>
+                            <span>合计</span>
                             <strong>{{planInfo.total}}</strong>
                         </div>
                         <div class="list-block-label">
