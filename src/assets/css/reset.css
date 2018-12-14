@@ -1,0 +1,135 @@
+@charset "utf-8";
+html {
+    font-size: 13.33333333vw
+}
+
+body, ul, ol, li, dl, dd, dt, p {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a, button, input {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+}
+
+body {
+    font-family: PingFang SC, Lantinghei SC, Helvetica Neue, Helvetica, Arial, Microsoft YaHei, '\\5FAE软雅黑', STHeitiSC-Light, simsun, '\\5B8B体', WenQuanYi Zen Hei, WenQuanYi Micro Hei, sans-serif;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: .3rem;
+}
+
+#app {
+    height: 100vh;
+    overflow: hidden;
+    background: #F8F8F8;
+}
+
+.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    border: none;
+    flex: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: none;
+    font-size: 0.3rem;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #CCCCCC;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #CCCCCC;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #CCCCCC;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #CCCCCC;
+}
+
+.list-block .item-input {
+    flex: 1;
+    flex-direction: column;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+textarea:disabled, input:disabled {
+    background: none;
+    color: #000;
+}
+
+.list-block ul {
+    background: #fff;
+    margin-top: .4rem;
+    border-top: 1px solid #E5E5E5;
+}
+
+.list-block-label {
+    color: #808080;
+    font-size: .26rem;
+    float: left;
+    padding-left: .3rem;
+    padding-top: .1rem;
+    line-height: .4rem;
+}
+
+.list-block .item-title.label, .list-block .item-after, .list-block .item-input {
+    display: flex;
+    align-items: center;
+}
+
+.list-block .item-content {
+    display: flex;
+    justify-content: space-between;
+    height: .94rem;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 0 .3rem;
+
+}
+
+.btn-submit {
+    height: .84rem;
+    line-height: .84rem;
+    text-align: center;
+    background: #1AAD1A;
+    display: block;
+    color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    font-size: .32rem;
+}
