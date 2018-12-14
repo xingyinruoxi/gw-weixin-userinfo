@@ -97,7 +97,7 @@
                             如扣款日遇公休日、法定节假日，则顺延至节后第一个工作日扣款，不属于逾期行为。
                         </div>
                     </div>
-                    <div class="tab" v-show="iNow===1">
+                    <div class="tab tab2" v-show="iNow===1">
                         <div class="content-block-title list-title">
                             <span>还款期数</span>
                             <span>应还款日</span>
@@ -154,6 +154,7 @@
                 list,
                 status
             } = await getContractDetail({contractId});
+            // console.log(customerPerson,guarantPerson,list,);
             if (status !== 'success') return;
             this.customerPerson = customerPerson;
             this.guarantPerson = guarantPerson;
@@ -227,6 +228,12 @@
         padding-top: .1rem;
     }
 
+
+    .tab2 .list-contract{
+        label, span {
+            width: 2rem;
+        }
+    }
     .list-contract {
         background: #fff;
         border-bottom: 1px solid #E5E5E5;
@@ -235,9 +242,7 @@
         color: #808080;
         font-size: .28rem;
         line-height: .62rem;
-        label, span {
-            width: 2rem;
-        }
+
         span {
             text-align: right
         }

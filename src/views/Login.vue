@@ -127,7 +127,7 @@
             userInfo: {
                 handler(newName, oldName) {
                     this.checkSubmit();
-                    console.log('newName',newName);
+                    // console.log('newName',newName);
                 },
                 deep: true
             },
@@ -223,7 +223,7 @@
                     localStorage.setItem("token", token);
                     this.$router.push({path: '/contractdetail'})
                 } else {
-                    this.$store.commit('alertModal', '请仔细阅读《微信金融服务账号绑定协议协议》，同意后可进行账号绑定操作')
+                    this.$store.commit('alertModal', '请仔细阅读《微信金融服务账号绑定协议》，同意后可进行账号绑定操作')
                 }
 
             }
