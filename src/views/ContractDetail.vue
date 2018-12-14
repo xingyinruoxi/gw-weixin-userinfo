@@ -336,7 +336,6 @@
 
     .total-num {
         border-bottom: 1px solid #E5E5E5;
-        border-top: 1px solid #E5E5E5;
         height: .94rem;
         display: flex;
         justify-content: space-between;

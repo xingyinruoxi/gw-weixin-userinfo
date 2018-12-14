@@ -3,8 +3,11 @@
         <div class="content">
             <Loading v-show="$store.state.isLoading"/>
             <p
+                    v-show="dev==='development'?true:false"
                     @click="clearToken"
+                    style="text-align: center;padding-top: 20px;"
             >清除token</p>
+            <!--{{process.env.NODE_ENV}}-->
             <ul class="list-contract" v-show="!$store.state.isLoading">
                 <li v-for="item in list">
                     <router-link :to="{name:'contractdetail', query: { contractId: item.contractId }}">
@@ -78,7 +81,8 @@
         name: 'listcontract',
         data() {
             return {
-                list: []
+                list: [],
+                dev:process.env.NODE_ENV
             }
         },
         components: {
@@ -86,7 +90,6 @@
         },
         methods:{
             clearToken(){
-                console.log('ertyui');
                 localStorage.removeItem('token');
                 localStorage.removeItem('openId');
             }

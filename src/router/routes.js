@@ -1,12 +1,8 @@
-import Login from './../views/Login'
-import ContractDetail from '../views/ContractDetail'
-import ContractList from '../views/ContractList'
-
 export let routes = [
     {
         path: '/login',
         name: 'login',
-        component: Login,
+        component: () => import(/* webpackChunkName: "login" */ '@/views/Login'),
         meta: {
             title: '绑定账号'
         },
@@ -15,7 +11,7 @@ export let routes = [
     {
         path: '/contractlist',
         name: 'contractlist',
-        component: ContractList,
+        component: () => import(/* webpackChunkName: "contractlist" */ '@/views/ContractList'),
         meta: {
             requireAuth: true,
             title: '选择合同'
@@ -24,7 +20,7 @@ export let routes = [
     {
         path: '/contractdetail',
         name: 'contractdetail',
-        component: ContractDetail,
+        component: () => import(/* webpackChunkName: "contractdetail" */ '@/views/ContractDetail'),
         meta: {
             requireAuth: true,
             title: '合同信息'
@@ -47,10 +43,10 @@ export let routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ './../views/HelloWorld.vue'),
+        component: () => import(/* webpackChunkName: "hello" */ './../views/HelloWorld.vue'),
         meta: {
             title: '你好'
         }
     },
-
+    {path: '*', redirect: {name: 'login'}},
 ];
