@@ -53,7 +53,7 @@ export let routes = [
     {
         path: '/account',
         name: 'account',
-        component: () => import(/* webpackChunkName: "contractlist" */ '@/views/Account.vue'),
+        component: () => import(/* webpackChunkName: "account" */ '@/views/Account.vue'),
         meta: {
             requireAuth: true,
             title: '我的账号'
