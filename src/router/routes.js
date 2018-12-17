@@ -50,4 +50,13 @@ export let routes = [
         }
     },*/
     {path: '*', redirect: {name: 'login'}},
+    {
+        path: '/account',
+        name: 'account',
+        component: () => import(/* webpackChunkName: "contractlist" */ '@/views/Account.vue'),
+        meta: {
+            requireAuth: true,
+            title: '我的账号'
+        }
+    },
 ];

@@ -60,3 +60,12 @@ export const getContractList = (param) => {
 export const getOpenId = (param) => {
     return fetch('/api/wx/getOpenId', param);
 };
+
+// 退出登录
+export const layout = (param) => {
+    return fetch('/api/auth/logout', param);
+};
+// 获取用户信息
+export const getUserInfo = () => {
+    return fetch('/api/auth/getUserInfo');
+};
