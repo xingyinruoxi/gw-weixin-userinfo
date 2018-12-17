@@ -116,11 +116,39 @@ textarea:disabled, input:disabled {
     display: flex;
     justify-content: space-between;
     height: .94rem;
-    border-bottom: 1px solid #E5E5E5;
+    /*border-bottom: 1px solid #E5E5E5;*/
     padding: 0 .3rem;
+    position: relative;
 
 }
+.list-block .item-content:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    /*border-bottom: 1px solid #E5E5E5;*/
+    background-color: #E5E5E5;
+    display: block;
+    z-index: 4;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
 
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .list-block .item-content:after {
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    .list-block .item-content:after {
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33);
+    }
+}
 .btn-submit {
     height: .84rem;
     line-height: .84rem;

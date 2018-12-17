@@ -72,6 +72,8 @@
         },
         methods: {
             async layout() {
+                let {code} = this.$route.query;
+                alert('code',code);
                 let token = localStorage.getItem('token');
                 let {status} = await layout({token});
                 if (status !== "success") return;
