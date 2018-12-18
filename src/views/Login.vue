@@ -198,6 +198,7 @@
             },
             async sendCode({target}) {
                 let {phone} = this.userInfo;
+                // console.log(phone);
                 let hasPhone = this.checkphone(phone);
                 if (!hasPhone) return;
                 let data = await getMobileCode({phone})

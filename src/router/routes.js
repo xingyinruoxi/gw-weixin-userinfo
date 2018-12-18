@@ -55,7 +55,7 @@ export let routes = [
         name: 'account',
         component: () => import(/* webpackChunkName: "account" */ '@/views/Account.vue'),
         meta: {
-            requireAuth: true,
+            // requireAuth: true,
             title: '我的账号'
         }
     },
