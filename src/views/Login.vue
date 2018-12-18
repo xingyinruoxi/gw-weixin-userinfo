@@ -275,8 +275,48 @@
         border-left: 1px solid #E5E5E5;
         padding-left: .3rem;
         padding-right: .2rem;
+        position: relative;
     }
-
+   /* .item-after-code:after{
+        content: " ";
+        position: absolute;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        !*border-bottom: 1px solid #E5E5E5;*!
+        background-color: #E5E5E5;
+        !*background-color: #000;*!
+        width: .94rem;
+        !*width:60px;*!
+        display: block;
+        z-index: 64;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        .item-after-code:after {
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+            transform:rotate(90deg);
+            -ms-transform:rotate(90deg); 	!* IE 9 *!
+            -moz-transform:rotate(90deg); 	!* Firefox *!
+            -webkit-transform:rotate(90deg); !* Safari 和 Chrome *!
+            -o-transform:rotate(90deg); 	!* Opera *!
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        .item-after-code:after {
+            -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+            transform:rotate(90deg);
+            -ms-transform:rotate(90deg); 	!* IE 9 *!
+            -moz-transform:rotate(90deg); 	!* Firefox *!
+            -webkit-transform:rotate(90deg); !* Safari 和 Chrome *!
+            -o-transform:rotate(90deg); 	!* Opera *!
+        }
+    }*/
     .item-after-code .link-code {
         color: #1AAD1A;
         font-size: .3rem;
