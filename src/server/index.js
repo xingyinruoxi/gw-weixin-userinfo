@@ -22,11 +22,11 @@ function fetch(url, param = {}) {
                 let {status,msg}=data;
                 store.commit('updatedIsLoading', false);
                 if(status!=='success'){
-                    store.commit('alertModal', msg);
+                    store.commit('alertModal', {msg});
                 }
                 resolve(data);
             }, err => {
-                store.commit('alertModal', '网络错误');
+                store.commit('alertModal', {msg:'网络错误'});
                 reject(err)
             })
     })

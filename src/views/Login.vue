@@ -139,6 +139,7 @@
              }*/
         },
         async beforeCreate() {
+            this.$store.commit('alertModal', { modalBtnCancel:false,fn:null});
             if (isLogin()) {
                 this.$router.push({path: '/contractdetail'});
             } else {
@@ -224,7 +225,7 @@
                     localStorage.setItem("token", token);
                     this.$router.push({path: '/contractdetail'})
                 } else {
-                    this.$store.commit('alertModal', '请仔细阅读《欧拉融资租赁账号绑定协议》，同意后可进行账号绑定操作')
+                    this.$store.commit('alertModal', {msg:'请仔细阅读《欧拉融资租赁账号绑定协议》，同意后可进行账号绑定操作'})
                 }
 
             }

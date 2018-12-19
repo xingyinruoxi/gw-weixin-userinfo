@@ -18,9 +18,9 @@
                 </ul>
                 <span v-show="toggleStatus" v-if="guarantPerson">担保人信息</span>
                 <ul v-show="toggleStatus" v-if="guarantPerson">
-                    <li>姓名：杨业</li>
-                    <li>身份证号：130604198903111216</li>
-                    <li>手机号码：18800114115</li>
+                    <li>姓名：{{guarantPerson.fullname}}</li>
+                    <li>身份证号：{{guarantPerson.idCard}}</li>
+                    <li>手机号码：{{guarantPerson.phone}}</li>
                 </ul>
             </div>
             <router-link to="/contractlist" class="tab-btn">

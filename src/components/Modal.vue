@@ -4,32 +4,49 @@
             <dt>温馨提示</dt>
             <dd>
                 <p>{{$store.state.msg}}</p>
-                <a
-                        href="javascript:;"
-                        class="btn-close"
-                        @click="closeModal"
-                >确定</a>
+                <footer class="modal-footer">
+                    <a href="javascript:;"
+                       v-if="$store.state.modalBtnCancel"
+                       class="btn-cancel"
+                       @click="clickCancel"
+                    >取消</a>
+                    <a
+                            href="javascript:;"
+                            class="btn-ok"
+                            @click="clickOk"
+                    >确定</a>
+                </footer>
             </dd>
         </dl>
     </div>
 </template>
 <script>
-    import store from './../store'
     export default {
-        data(){
+        data() {
             return {
-                onOff:this.$store.state.msg?true:false
+                onOff: this.$store.state.msg ? true : false
             }
         },
         props: {
             msg: String
         },
-        updated(){
-            this.onOff=this.$store.state.msg?true:false
+        updated() {
+            this.onOff = this.$store.state.msg ? true : false
         },
-        methods:{
-            closeModal(){
-                store.commit('alertModal','')
+        methods: {
+            closeModal() {
+                this.$store.commit('alertModal', {msg: ''})
+            },
+            clickOk() {
+                if ((typeof this.$store.state.fn) === 'function') {
+                    this.$store.state.fn();
+                    this.$store.commit('alertModal', {msg: '', modalBtnCancel: false, fn: null});
+                } else {
+                    this.closeModal();
+                }
+            },
+            clickCancel() {
+                this.closeModal();
             }
         }
     }
@@ -49,32 +66,44 @@
         align-items: center;
     }
 
+    .modal-footer {
+        border-top: 1px solid #D5D5D6;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        a {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-cancel {
+            border-right: 1px solid #D5D5D6;
+        }
+    }
+
     .modtal {
         background: #ffffff;
         width: 5.6rem;
+        border-radius: 4px;
+        overflow: hidden;
         text-align: center;
         dt {
-            font-size: .36rem;
+            font-size: .38rem;
             padding-top: .4rem;
+            font-weight: bold;
         }
         dd {
-            padding-left: .4rem;
-            padding-right: .4rem;
-            padding-top: .2rem;
             p {
-                color: #666666;
+                color: #808080;
+                padding: 20px;
             }
         }
-        .btn-close {
-            background: #1AAD1A;
-            margin-bottom: .2rem;
-            height: .68rem;
-            display: flex;
-            color: #ffffff;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            margin-top: .4rem;
+        .btn-ok {
+            color: #0ABB08;
+
         }
     }
 </style>

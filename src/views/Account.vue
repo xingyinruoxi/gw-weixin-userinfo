@@ -13,7 +13,7 @@
                 </li>
                 <li>
                     <div class="item-content">
-                        <div class="item-title label">证件类型</div>
+                        <div class="item-title label">证件号码</div>
                         <div class="item-text">
                             <span>{{idCard}}</span>
                         </div>
@@ -71,13 +71,17 @@
             }
         },
         methods: {
-            async layout() {
+            async fn() {
                 let {code} = this.$route.query;
                 let token = localStorage.getItem('token');
                 let {status} = await layout({token});
                 if (status !== "success") return;
                 localStorage.removeItem('token');
                 this.$router.push({path: '/login', query: {code}});
+            },
+             layout() {
+                let msg = '解绑后将不能再查看合同信息，确定是否解绑';
+                this.$store.commit('alertModal', {msg, modalBtnCancel: true, fn:this.fn});
             }
         },
         async created() {
