@@ -144,7 +144,7 @@
                 guarantPerson: {},
                 list: {},
                 contractId: '',
-                nfmoney:nfmoney
+                nfmoney
             }
         },
         async created() {

@@ -21,7 +21,10 @@
                             <ol>
                                 <li><span>申请购车人</span><span>{{item.customerName}}</span></li>
                                 <li><span>选择车型</span><span>{{item.carMode}}</span></li>
-                                <li><span>贷款金额</span><span>{{item.loanTotal}}</span></li>
+                                <li>
+                                    <span>贷款金额</span>
+                                    <span>{{nfmoney(item.loanTotal*100)}}</span>
+                                </li>
                                 <li><span>还款期数</span><span>{{item.loanPeriod}} 期</span></li>
                                 <li><span>申请时间</span><span>{{item.approveTime}}</span></li>
                             </ol>
@@ -75,6 +78,7 @@
 <script>
     import BScroll from 'better-scroll'
     import Loading from './../components/Loading'
+    import {nfmoney} from './../lib/utils'
     import {getContractList} from './../server'
 
     export default {
@@ -82,7 +86,8 @@
         data() {
             return {
                 list: [],
-                dev:process.env.NODE_ENV
+                dev:process.env.NODE_ENV,
+                nfmoney
             }
         },
         components: {
