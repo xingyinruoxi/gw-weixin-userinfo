@@ -18,7 +18,9 @@
                             <input
                                     type="text"
                                     placeholder="请输入证件号码"
+                                    maxlength="18"
                                     v-model="userInfo.idCard"
+                                    @keyup="keyupChange('cardErrer')"
                                     @blur="checkCard(userInfo.idCard)"
                             >
                         </div>
@@ -32,8 +34,10 @@
                         <div class="item-title label">手机号</div>
                         <div class="item-input">
                             <input
-                                    type="text"
+                                    type="tel"
                                     placeholder="请输入手机号"
+                                    maxlength="11"
+                                    @keyup="keyupChange('phoneErrer')"
                                     v-model="userInfo.phone"
                                     @blur="checkphone(userInfo.phone)"
                             >
@@ -48,8 +52,9 @@
                         <div class="item-title label">验证码</div>
                         <div class="item-input">
                             <input
-                                    type="number"
                                     placeholder="请输入验证码"
+                                    maxlength="4"
+                                    @keyup="keyupChange('codeErrer')"
                                     v-model="userInfo.code"
                                     @blur="checkCode(userInfo.code)"
                             >
@@ -127,7 +132,6 @@
             userInfo: {
                 handler(newName, oldName) {
                     this.checkSubmit();
-                    // console.log('newName',newName);
                 },
                 deep: true
             },
@@ -160,6 +164,7 @@
                 let reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
                 if (!reg.test(phone)) {
                     this.errers.phoneErrer = true;
+                    this.checkSubmit();
                     return false;
                 } else {
                     this.errers.phoneErrer = false;
@@ -170,6 +175,7 @@
                 let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
                 if (reg.test(idCard) === false) {
                     this.errers.cardErrer = true;
+                    this.checkSubmit();
                     return false;
                 } else {
                     this.errers.cardErrer = false;
@@ -177,10 +183,14 @@
                 }
 
             },
+            keyupChange(obj){
+                this.errers[obj]=false;
+            },
             checkCode(code) {
                 let reg = /^\d{4}$/;
                 if (reg.test(code) === false) {
                     this.errers.codeErrer = true;
+                    this.checkSubmit();
                     return false;
                 } else {
                     this.errers.codeErrer = false;
@@ -194,8 +204,9 @@
                 let errerResult = Object.values(this.errers).every(item => {
                     return item !== true;
                 });
-                // this.onOff = errerResult&&userInfoResult;
-                this.onOff = userInfoResult;
+                // console.log('errerResult:',errerResult,'userInfoResult',userInfoResult);
+                this.onOff = errerResult&&userInfoResult;
+                // this.onOff = userInfoResult;
             },
             async sendCode({target}) {
                 let {phone} = this.userInfo;

@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <label>贷款金额</label>
-                                <span>{{list.loanTotal}} 元</span>
+                                <span>{{nfmoney(list.loanTotal*100)}} 元</span>
                             </li>
                             <li>
                                 <label>贷款期数</label>
@@ -110,12 +110,12 @@
                             >
                                 <label>{{item.repayNum}}期{{item.payState==='1'?'(已还)':null}}</label>
                                 <time>{{item.repayDate}}</time>
-                                <span>{{item.repayMoney}}</span>
+                                <span>{{nfmoney(item.repayMoney*100)}}</span>
                             </li>
                         </ul>
                         <div class="total-num">
                             <span>合计</span>
-                            <strong>{{planInfo.total}}</strong>
+                            <strong>{{nfmoney(planInfo.total*100)}}</strong>
                         </div>
                         <div class="list-block-label">
                             如扣款日遇公休日、法定节假日，则顺延至节后第一个工作日扣款，不属于逾期行为。
@@ -129,6 +129,7 @@
 <script>
     import BScroll from 'better-scroll'
     import Loading from './../components/Loading'
+    import {nfmoney} from './../lib/utils'
     import {getContractDetail, getPlanInfo} from './../server'
 
     export default {
@@ -143,9 +144,11 @@
                 guarantPerson: {},
                 list: {},
                 contractId: '',
+                nfmoney:nfmoney
             }
         },
         async created() {
+            // console.log(nfmoney(55.3*100));
             // localStorage.removeItem("token");
             let {contractId} = this.$route.query;
             let {
