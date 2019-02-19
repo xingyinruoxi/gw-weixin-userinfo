@@ -118,7 +118,7 @@
                     idCard: '',
                     phone: '',
                     code: '',
-                    openId: this.$store.state.openId,
+                    openId: this.$store.state.openId||'noGetOpenId',
                 },
                 errers: {
                     cardErrer: false,

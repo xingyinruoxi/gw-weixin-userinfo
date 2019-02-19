@@ -8,7 +8,7 @@ export default new Vuex.Store({
         token:localStorage.getItem("token")||'',
         isLoading: true,
         msg:'',
-        openId:localStorage.getItem("openId")||'poiuytre',
+        openId:localStorage.getItem("openId")||'',
         openAgree:false,
         modalBtnCancel:false,
         fn:null
