@@ -78,7 +78,7 @@
 <script>
     import BScroll from 'better-scroll'
     import Loading from './../components/Loading'
-    import {nfmoney} from './../lib/utils'
+    import {nfmoney,setCookie} from './../lib/utils'
     import {getContractList} from './../server'
 
     export default {
@@ -97,6 +97,8 @@
             clearToken(){
                 localStorage.removeItem('token');
                 localStorage.removeItem('openId');
+                setCookie('token','',-1);
+                setCookie('openId','',-1);
             }
         },
         mounted() {

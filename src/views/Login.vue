@@ -103,7 +103,7 @@
     import FormErrer from './../components/FormErrer'
     import Agreement from './../components/Agreement'
     import {getMobileCode, doLogin, getOpenId} from './../server'
-    import {isLogin} from './../lib/utils'
+    import {isLogin,setCookie,getCookie} from './../lib/utils'
 
     export default {
         name: 'login',
@@ -118,7 +118,7 @@
                     idCard: '',
                     phone: '',
                     code: '',
-                    openId: this.$store.state.openId||'noGetOpenId',
+                    openId: this.$store.state.openId||getCookie("openId")||'noGetOpenId',
                 },
                 errers: {
                     cardErrer: false,
@@ -151,8 +151,10 @@
                 let {token, status, openId} = await getOpenId({grantCode: code});
                 if (status !== 'success') return;
                 localStorage.setItem("openId", openId);
+                setCookie("openId",openId, 365);
                 if (!token) return;
                 localStorage.setItem("token", token);
+                setCookie("token",token, 365);
                 this.$router.push({path: '/contractdetail'});
             }
         },

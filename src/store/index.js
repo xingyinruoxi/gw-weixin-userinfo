@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
+import {getCookie} from './../lib/utils'
 export default new Vuex.Store({
     state: {
-        token:localStorage.getItem("token")||'',
+        token:localStorage.getItem("token")||getCookie("token")||'',
         isLoading: true,
         msg:'',
-        openId:localStorage.getItem("openId")||'',
+        openId:localStorage.getItem("openId")||getCookie("openId")||'noGetOpenId',
         openAgree:false,
         modalBtnCancel:false,
         fn:null

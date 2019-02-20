@@ -1,6 +1,14 @@
 
 export let routes = [
     {
+        path: '/register',
+        name: 'register',
+        component: () => import(/* webpackChunkName: "login" */ '@/views/Register'),
+        meta: {
+            title: '注册账号'
+        },
+    },
+    {
         path: '/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "login" */ '@/views/Login'),

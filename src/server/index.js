@@ -1,11 +1,12 @@
 import axios from 'axios'
 import store from '@/store'
+import {getCookie} from './../lib/utils'
 
 let server = axios.create({
     responseType: 'json'
 });
 server.interceptors.request.use(function (config) {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('token')||getCookie('token');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

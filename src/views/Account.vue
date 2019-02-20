@@ -61,6 +61,7 @@
 </style>
 <script>
     import {layout, getUserInfo} from './../server'
+    import {getCookie,setCookie} from './../lib/utils'
 
     export default {
         data() {
@@ -73,10 +74,11 @@
         methods: {
             async fn() {
                 let {code} = this.$route.query;
-                let token = localStorage.getItem('token');
+                let token = localStorage.getItem('token')||getCookie('token');
                 let {status} = await layout({token});
                 if (status !== "success") return;
                 localStorage.removeItem('token');
+                setCookie('token','',-1);
                 this.$router.push({path: '/login', query: {code}});
             },
              layout() {
