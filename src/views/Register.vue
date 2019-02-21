@@ -41,7 +41,6 @@
         </li>
       </ul>
     </div>
-    <div>rtyu:===={{userInfo.openId}}</div>
     <button class="btn btn-submit" :disabled="!onOff" @click="clickSubmit">注册</button>
   </section>
 </template>
@@ -60,7 +59,7 @@ export default {
       userInfo: {
         phone: "",
         code: "",
-        openId:"noGetOpenId"
+        openId: "noGetOpenId"
       },
       errers: {
         phoneErrer: false,
@@ -145,19 +144,14 @@ export default {
       }, 1000);
     },
     async clickSubmit() {
-      /* let { code } = this.$route.query;
-      let { token, status, openId } = await getOpenId({ grantCode: code });
-      if (status !== "success") return;
-      this.userInfo.openId = openId; */
-      this.userInfo.openId = '周林';
-      console.log('this.userInfo',this.userInfo)
-      // let data = await doRegister(this.userInfo);
-      //  if (status !== "success") return;
-      //  this.$router.push({ path: "/questionlist" });
-      // console.log("data", data);
-      /*   let {status } = await doRegister(this.userInfo);
-      if (status !== "success") return;
-      this.$router.push({ path: "/questionlist" }); */
+      let { code } = this.$route.query;
+      let { status, openId } = await getOpenId({ grantCode: code });
+      if (status === "success") {
+        this.userInfo.openId = openId;
+      }
+      let data = await doRegister(this.userInfo);
+      if (data.status !== "success") return;
+      this.$router.push({ path: "/questionlist" ,query:{phone:this.userInfo.phone}});
     }
   }
 };

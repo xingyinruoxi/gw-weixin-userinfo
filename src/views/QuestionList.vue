@@ -79,6 +79,7 @@
 <script>
 import BScroll from "better-scroll";
 import Loading from "./../components/Loading";
+import { getUserAnswers } from "./../server";
 
 export default {
   data() {
@@ -107,7 +108,9 @@ computed: {
     },
     async clickSubmit() {
       let {buyType,carModel,money}=this;
-
+      let { phone } = this.$route.query;
+      let data = await getUserAnswers({buyType,carModel,money,phone});
+      if (data.status !== "success") return;
        this.$router.push({ path: "/registersuccess",query:{buyType,carModel,money } });
     }
   }
