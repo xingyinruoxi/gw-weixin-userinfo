@@ -9,6 +9,22 @@ export let routes = [
         },
     },
     {
+        path: '/questionlist',
+        name: 'questionlist',
+        component: () => import(/* webpackChunkName: "questionlist" */ '@/views/QuestionList'),
+        meta: {
+            title: '问卷调查'
+        },
+    },
+    {
+        path: '/registersuccess',
+        name: 'registersuccess',
+        component: () => import(/* webpackChunkName: "registersuccess" */ '@/views/RegisterSuccess'),
+        meta: {
+            title: '问卷结果'
+        },
+    },
+    {
         path: '/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "login" */ '@/views/Login'),

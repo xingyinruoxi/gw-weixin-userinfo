@@ -43,6 +43,11 @@ export const doLogin = (param) => {
     return fetch('/api/auth/login', param);
 };
 
+// 获取注册后信息
+export const doRegister = (param) => {
+    return fetch('/api/auth/regist', param);
+};
+
 // 获取合同详情
 export const getContractDetail = (param) => {
     return fetch('/api/auth/contractDetail', param);

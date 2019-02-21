@@ -6,7 +6,8 @@ module.exports = {
             '/api': {
                 // target: 'http://www.havalfl.com',
                 // target: 'http://192.168.1.115:5010',
-                target: 'http://weport.orafl.com',
+                // target: 'http://weport.orafl.com',
+                target: 'http://10.6.132.152:50010',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
