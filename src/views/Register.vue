@@ -22,35 +22,32 @@
         </li>
         <li class="item-li">
           <div class="item-content">
-          <div class="item-input">
-            <input
-              placeholder="请输入验证码"
-              maxlength="4"
-              @keyup="keyupChange('codeErrer')"
-              v-model="userInfo.code"
-              @blur="checkCode(userInfo.code)"
-            >
+            <div class="item-input">
+              <input
+                placeholder="请输入验证码"
+                maxlength="4"
+                @keyup="keyupChange('codeErrer')"
+                v-model="userInfo.code"
+                @blur="checkCode(userInfo.code)"
+              >
+            </div>
+            <div class="item-after" v-show="errers.codeErrer">
+              <FormErrer/>&nbsp;&nbsp;
+            </div>
           </div>
-          <div class="item-after" v-show="errers.codeErrer">
-            <FormErrer/>&nbsp;&nbsp;
-          </div>
-         
-          <!-- <div class="line">&nbsp;</div> -->
-          </div>
-           <div class="item-after item-after-code" ref="getCode">
+          <div class="item-after item-after-code" ref="getCode">
             <button class="link-code" @click="sendCode">获取验证码</button>
           </div>
         </li>
       </ul>
     </div>
-
+    <div>rtyu:===={{userInfo.openId}}</div>
     <button class="btn btn-submit" :disabled="!onOff" @click="clickSubmit">注册</button>
   </section>
 </template>
 <script>
 import FormErrer from "./../components/FormErrer";
 import { getMobileCode, doRegister, getOpenId } from "./../server";
-// import { isLogin } from "./../lib/utils";
 
 export default {
   name: "register",
@@ -63,7 +60,7 @@ export default {
       userInfo: {
         phone: "",
         code: "",
-        openId: this.$store.state.openId || "noGetOpenId"
+        openId:"noGetOpenId"
       },
       errers: {
         phoneErrer: false,
@@ -148,10 +145,16 @@ export default {
       }, 1000);
     },
     async clickSubmit() {
-      //  this.$router.push({ path: "/questionlist" });
-      let data = await doRegister(this.userInfo);
+      /* let { code } = this.$route.query;
+      let { token, status, openId } = await getOpenId({ grantCode: code });
+      if (status !== "success") return;
+      this.userInfo.openId = openId; */
+      this.userInfo.openId = '周林';
+      console.log('this.userInfo',this.userInfo)
+      // let data = await doRegister(this.userInfo);
       //  if (status !== "success") return;
-      console.log("data", data);
+      //  this.$router.push({ path: "/questionlist" });
+      // console.log("data", data);
       /*   let {status } = await doRegister(this.userInfo);
       if (status !== "success") return;
       this.$router.push({ path: "/questionlist" }); */
@@ -164,7 +167,7 @@ export default {
   min-height: 500px;
   background: #ffffff;
   padding: 0 40px;
-  .item-li{
+  .item-li {
     display: flex;
   }
   .logo {
@@ -173,14 +176,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .line {
-    background: #fff;
-    position: absolute;
-    right: 0;
-    height: 1px;
-    bottom: -1px;
-    width: 126px;
   }
 }
 
@@ -215,8 +210,8 @@ export default {
 }
 
 .item-after-code {
-  padding-left: 0.3rem; 
-  padding-right: 0.2rem;              
+  padding-left: 0.3rem;
+  padding-right: 0.2rem;
   position: relative;
   background: #e50113;
   border-radius: 22px;
